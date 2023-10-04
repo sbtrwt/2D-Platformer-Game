@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public BoxCollider2D boxCollider;
     private bool isCrouch;
+    public int speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,25 +18,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
         //Control user by inputs
-        float speed = Input.GetAxisRaw("Horizontal");
-        if (speed > 0)
-            Debug.Log(speed);
-        animator.SetFloat("Speed", Mathf.Abs(speed));
-
-        Vector3 scale = transform.localScale;
-        if (speed < 0)
-        {
-            scale.x = -1f * Mathf.Abs(scale.x);
-        }
-        else
-        {
-            scale.x = Mathf.Abs(scale.x);
-        }
-        transform.localScale = scale;
-
-        
+        float horizontal = Input.GetAxisRaw("Horizontal");
+       
 
         if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
         {
@@ -46,8 +32,29 @@ public class PlayerController : MonoBehaviour
             isCrouch = false;
         }
         //Box collider size change on up/down
+        Move(horizontal);
         Crouch();
         Jump();
+    }
+
+    private void Move(float horizontal)
+    {
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
+
+        Vector3 scale = transform.localScale;
+        if (horizontal < 0)
+        {
+            scale.x = -1f * Mathf.Abs(scale.x);
+        }
+        else
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
+
+        transform.localScale = scale;
+        Vector3 position = transform.position;
+        position.x += speed * horizontal * Time.deltaTime;
+        transform.position = position;
     }
 
     private void Crouch()

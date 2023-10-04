@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1481345977}
-  collider: {fileID: 1481345983}
+  boxCollider: {fileID: 1481345983}
 --- !u!61 &1481345983 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 4613446524669453159, guid: c0d789983d98e5a4fa51fb4079f3f776,

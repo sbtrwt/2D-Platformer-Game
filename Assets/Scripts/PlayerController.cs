@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D boxCollider;
     private bool isCrouch;
     public int speed;
+    public Rigidbody2D rb2d;
+    public float jumpAmount = 7;
+    
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -86,6 +90,14 @@ public class PlayerController : MonoBehaviour
     private void Jump() {
         float upMove = Input.GetAxisRaw("Vertical");
         animator.SetBool("IsJump", upMove > 0);
-      
+        //if(upMove > 0)
+        //    rb2d.AddForce(Vector2.up * speed, ForceMode2D.Force);
+
+        if (upMove > 0)
+        {
+            //rb2d.AddForce(Vector2.up * jumpAmount, ForceMode2D.Force);
+            rb2d.AddForce(transform.up * jumpAmount * Time.deltaTime, ForceMode2D.Impulse);
+        }
+       
     }
 }

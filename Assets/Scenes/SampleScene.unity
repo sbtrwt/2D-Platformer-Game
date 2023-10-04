@@ -437,7 +437,12 @@ PrefabInstance:
     - target: {fileID: 2849416241872663879, guid: c0d789983d98e5a4fa51fb4079f3f776,
         type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849416241872663879, guid: c0d789983d98e5a4fa51fb4079f3f776,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2849416241872663879, guid: c0d789983d98e5a4fa51fb4079f3f776,
         type: 3}
@@ -618,6 +623,7 @@ MonoBehaviour:
   animator: {fileID: 1481345977}
   boxCollider: {fileID: 1481345983}
   speed: 4
+  jumpAmount: 35
 --- !u!61 &1481345983 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 4613446524669453159, guid: c0d789983d98e5a4fa51fb4079f3f776,

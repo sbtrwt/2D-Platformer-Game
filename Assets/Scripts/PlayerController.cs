@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D boxCollider;
     private bool isCrouch;
     public int speed;
-    public Rigidbody2D rb2d;
+    private Rigidbody2D rb2d;
     public float jumpAmount = 7;
     
  
@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player controller awake");
         //collider = collider.GetComponent<BoxCollider2D>();
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -96,6 +97,7 @@ public class PlayerController : MonoBehaviour
         if (upMove > 0)
         {
             //rb2d.AddForce(Vector2.up * jumpAmount, ForceMode2D.Force);
+            if(rb2d)
             rb2d.AddForce(transform.up * jumpAmount * Time.deltaTime, ForceMode2D.Impulse);
         }
        

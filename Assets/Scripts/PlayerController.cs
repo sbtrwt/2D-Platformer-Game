@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator animator;
-    public BoxCollider2D boxCollider;
+    private Animator animator;
     private bool isCrouch;
-    public int speed;
     private Rigidbody2D rb2d;
-    public float jumpAmount = 7;
+    [SerializeField]public float jumpAmount = 8;
+    [SerializeField]public int speed;
+    [SerializeField]public BoxCollider2D boxCollider;
     
  
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Player controller awake");
-        //collider = collider.GetComponent<BoxCollider2D>();
+        animator = gameObject.GetComponent<Animator>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -101,5 +102,16 @@ public class PlayerController : MonoBehaviour
             rb2d.AddForce(transform.up * jumpAmount * Time.deltaTime, ForceMode2D.Impulse);
         }
        
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("Collision Detected");
+
+        if (other.gameObject.CompareTag("FinishLine"))
+        {
+            Debug.Log("Finish Line");
+            SceneManager.LoadScene("Level1");
+        }
+        
     }
 }

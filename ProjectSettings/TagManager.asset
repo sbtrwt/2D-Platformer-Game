@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FinishLine
   layers:
   - Default
   - TransparentFX
@@ -41,9 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 1945863777
-    locked: 0
   - name: Platform
     uniqueID: 1240473105
+    locked: 0
+  - name: Player
+    uniqueID: 1945863777
     locked: 0

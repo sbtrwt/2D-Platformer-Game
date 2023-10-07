@@ -116,24 +116,31 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Finish Line");
             SceneManager.LoadScene("Level1");
         }
-        
-    }
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        Debug.Log("Collision Detected OnCollisionStay2D" + other.gameObject.tag.ToString());
-        if (other.gameObject.CompareTag("Platform"))
+        if (other.gameObject.CompareTag("LowerBound"))
         {
-            Debug.Log("Platform Stay");
-            isGrounded = true;
+            Debug.Log("Lower Bound");
+            
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
         }
     }
+    //private void OnCollisionStay2D(Collision2D other)
+    //{
+    //    Debug.Log("Collision Detected OnCollisionStay2D" + other.gameObject.tag.ToString());
+    //    if (other.gameObject.CompareTag("Platform"))
+    //    {
+    //        Debug.Log("Platform Stay");
+    //        isGrounded = true;
+    //    }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Platform"))
-        {
-            Debug.Log("Platform Exit");
-            isGrounded = false;
-        }
-    }
+    //}
+
+    //private void OnCollisionExit2D(Collision2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Platform"))
+    //    {
+    //        Debug.Log("Platform Exit");
+    //        isGrounded = false;
+    //    }
+    //}
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FinishLine
   - Platform
+  - LowerBound
   layers:
   - Default
   - TransparentFX

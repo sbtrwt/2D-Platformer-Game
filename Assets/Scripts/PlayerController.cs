@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isCrouch;
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private bool IsKeyFound;
+
+    internal void PickUpKey()
+    {
+        Debug.Log("Player get Key");
+        IsKeyFound = true;
+    }
+
     public float jumpAmount = 8;
     public int speed;
     private bool isGrounded = false;

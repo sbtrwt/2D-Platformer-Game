@@ -7,6 +7,7 @@ TagManager:
   - FinishLine
   - Platform
   - LowerBound
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - Platform
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -49,4 +50,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1945863777
+    locked: 0
+  - name: Enemy
+    uniqueID: 3055124097
     locked: 0

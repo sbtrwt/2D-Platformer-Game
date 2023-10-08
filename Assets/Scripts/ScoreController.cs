@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class ScoreController : MonoBehaviour
 {
+    
     [SerializeField] private TextMeshProUGUI scoreText;
+    
     [SerializeField] private int score = 0;
+    
 
-    private void Awake()
-    {
-        scoreText = GetComponent<TextMeshProUGUI>();
-    }
+    
     // Start is called before the first frame update
     void Start()
     {
+        scoreText = GetComponent<TextMeshProUGUI>();
         RefreshUI();
     }
 
@@ -27,5 +28,9 @@ public class ScoreController : MonoBehaviour
     private void RefreshUI() {
         if(scoreText)
         scoreText.text = "Score : " + score;
+
     }
+
+  
+  
 }

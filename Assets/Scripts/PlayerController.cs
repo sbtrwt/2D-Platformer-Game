@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     //private bool isGrounded = false;
 
     public ScoreController scoreController;
+    public LifeController lifeController;
     internal void PickUpKey()
     {
         Debug.Log("Player get Key");
@@ -26,8 +27,10 @@ public class PlayerController : MonoBehaviour
     internal void KillPlayer()
     {
         Debug.Log("Kill Player");
-        animator.SetBool("IsDied", true);
-        ReloadScene();
+        if (lifeController.LifeDecrement() <= 0) { 
+            animator.SetBool("IsDied", true);
+            ReloadScene();
+        }
     }
 
    
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
+        rb2d.freezeRotation = true;
+        rb2d.angularVelocity = 0f;
     }
 
     // Update is called once per frame
@@ -109,6 +114,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Jump() {
+        
+       
         float upMove = Input.GetAxisRaw("Vertical");
 
         animator.SetBool("IsJump", upMove > 0);
@@ -123,7 +130,7 @@ public class PlayerController : MonoBehaviour
             if (rb2d)
             rb2d.AddForce(transform.up * jumpAmount * Time.deltaTime, ForceMode2D.Impulse);
         }
-       
+        
     }
     private void OnCollisionEnter2D(Collision2D other)
     {

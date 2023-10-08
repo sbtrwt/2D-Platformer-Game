@@ -11,11 +11,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private bool IsKeyFound;
-
+    public ScoreController scoreController;
     internal void PickUpKey()
     {
         Debug.Log("Player get Key");
         IsKeyFound = true;
+        scoreController.ScoreIncrement(10);
     }
 
     public float jumpAmount = 8;

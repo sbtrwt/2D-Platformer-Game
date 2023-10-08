@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private bool IsKeyFound;
+    public float jumpAmount = 8;
+    public int speed;
+    //private bool isGrounded = false;
+
     public ScoreController scoreController;
     internal void PickUpKey()
     {
@@ -19,10 +23,14 @@ public class PlayerController : MonoBehaviour
         scoreController.ScoreIncrement(10);
     }
 
-    public float jumpAmount = 8;
-    public int speed;
-    private bool isGrounded = false;
+    internal void KillPlayer()
+    {
+        Debug.Log("Kill Player");
+        animator.SetBool("IsDied", true);
+        ReloadScene();
+    }
 
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -129,9 +137,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("LowerBound"))
         {
             Debug.Log("Lower Bound");
-            
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            ReloadScene();
+           
         }
     }
     //private void OnCollisionStay2D(Collision2D other)
@@ -153,4 +160,9 @@ public class PlayerController : MonoBehaviour
     //        isGrounded = false;
     //    }
     //}
+
+    private void ReloadScene() {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
 }

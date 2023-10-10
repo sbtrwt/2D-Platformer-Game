@@ -13,12 +13,13 @@ public class LobbyController : MonoBehaviour
         buttonPlay.onClick.AddListener(PlayGame);
         buttonQuit.onClick.AddListener(QuitGame);
     }
-
+    
     private void PlayGame()
     {
         SceneManager.LoadScene(1);
 
     }
+   
     private void QuitGame()
     {
         Debug.Log("Quit");

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public ScoreController scoreController;
     public LifeController lifeController;
+    public GameOverController gameOverController;
     internal void PickUpKey()
     {
         Debug.Log("Player get Key");
@@ -29,7 +30,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Kill Player");
         if (lifeController.LifeDecrement() <= 0) { 
             animator.SetBool("IsDied", true);
-            ReloadScene();
+            gameOverController.PlayerDied();
+            //ReloadScene();
         }
     }
 
@@ -144,8 +146,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("LowerBound"))
         {
             Debug.Log("Lower Bound");
-            ReloadScene();
-           
+            //ReloadScene();
+            gameOverController.PlayerDied();
         }
     }
     //private void OnCollisionStay2D(Collision2D other)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum LevelStatus { Locked, Unlocked, Completed}
 public class Level
 {
     public static string Level1 = "Level1";

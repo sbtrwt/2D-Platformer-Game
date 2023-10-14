@@ -8,6 +8,12 @@ public class LevelOverController : MonoBehaviour
     {
         Debug.Log("Level finished by the player");
        
+      
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision Detected level finished");
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
             Debug.Log("Level finished by the player");

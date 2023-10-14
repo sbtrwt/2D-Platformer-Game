@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,9 +22,9 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        if(GetLevelStatus(Level.Level1) == LevelStatus.Locked)
+        if(GetLevelStatus(Level.Levels[0]) == LevelStatus.Locked)
         {
-            SetLevelStatus(Level.Level1, LevelStatus.Unlocked);
+            SetLevelStatus(Level.Levels[0], LevelStatus.Unlocked);
         }
     }
     public LevelStatus GetLevelStatus(string level) {
@@ -40,11 +41,11 @@ public class LevelManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SetLevelStatus(currentScene.name, LevelStatus.Completed);
 
-        int nextSceneIndex = currentScene.buildIndex + 1;
-        Scene nextScene = SceneManager.GetSceneByBuildIndex(nextSceneIndex);
-        if (nextScene != null)
-        {
-            SetLevelStatus(nextScene.name, LevelStatus.Unlocked);
+        int currentIndex = Array.FindIndex(Level.Levels, level => level == currentScene.name);
+        int nextSceneIndex = currentScene.buildIndex + 1 - Level.LevelOffset;
+        if (nextSceneIndex < Level.Levels.Length) {
+            SetLevelStatus(Level.Levels[nextSceneIndex], LevelStatus.Unlocked);
+            SceneManager.LoadScene(nextSceneIndex + Level.LevelOffset);
         }
     }
 

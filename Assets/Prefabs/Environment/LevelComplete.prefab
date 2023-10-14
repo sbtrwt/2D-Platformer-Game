@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6253108752784866038}
   - component: {fileID: 4104173280657340898}
   - component: {fileID: 3272731898706587965}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LevelComplete
   m_TagString: FinishLine
   m_Icon: {fileID: 0}

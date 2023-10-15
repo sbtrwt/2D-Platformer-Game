@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player get Key");
         IsKeyFound = true;
+        SoundManager.Instance.Play(SoundType.ItemCollect);
         scoreController.ScoreIncrement(10);
     }
 

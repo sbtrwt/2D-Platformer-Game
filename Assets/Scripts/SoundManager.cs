@@ -10,7 +10,8 @@ public enum SoundType {
     EnemyMove,
     EnemyDeath,
     Music,
-    LevelComplete
+    LevelComplete,
+    ItemCollect
 }
 public class SoundManager : MonoBehaviour
 {

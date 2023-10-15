@@ -1342,14 +1342,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 370020778720582589, guid: 3f2a966fe4b302d419b2b6fcf245ef18,
         type: 3}
+      propertyPath: m_Pitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 370020778720582589, guid: 3f2a966fe4b302d419b2b6fcf245ef18,
+        type: 3}
       propertyPath: m_Volume
-      value: 0.5
+      value: 0.065
       objectReference: {fileID: 0}
     - target: {fileID: 370020778720582589, guid: 3f2a966fe4b302d419b2b6fcf245ef18,
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 370020778720582589, guid: 3f2a966fe4b302d419b2b6fcf245ef18,
         type: 3}
       propertyPath: m_PlayOnAwake
@@ -1444,7 +1449,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Sounds.Array.data[3].soundClip
       value: 
-      objectReference: {fileID: 8300000, guid: ccb3ad8b5906ef14d921491eb8be7e2d, type: 3}
+      objectReference: {fileID: 8300000, guid: 4d02d075426b22b44bbdb5c1fd065ec7, type: 3}
     - target: {fileID: 7622588569915306452, guid: 3f2a966fe4b302d419b2b6fcf245ef18,
         type: 3}
       propertyPath: Sounds.Array.data[3].soundType

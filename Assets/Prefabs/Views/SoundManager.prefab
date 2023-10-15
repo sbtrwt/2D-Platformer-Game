@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5790931985498833158}
-  - component: {fileID: 7622588569915306452}
+  - component: {fileID: 6802431252418748809}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 7465629023428176887}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7622588569915306452
+--- !u!114 &6802431252418748809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,17 +46,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5854735f98122d34ca7ca9035d212865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffect: {fileID: 2197023369880229515}
+  soundMusic: {fileID: 370020778720582589}
   Sounds:
   - soundType: 0
     soundClip: {fileID: 8300000, guid: df6d1af64fdebb04d80a54b27b720509, type: 3}
   - soundType: 1
-    soundClip: {fileID: 8300000, guid: 13de3c8b19190eb488622c2982f7e977, type: 3}
+    soundClip: {fileID: 8300000, guid: 4d02d075426b22b44bbdb5c1fd065ec7, type: 3}
   - soundType: 2
     soundClip: {fileID: 8300000, guid: 8d76c4a7797e3994eb5a27a04876b1fe, type: 3}
-  - soundType: 3
-    soundClip: {fileID: 8300000, guid: 2efac6b1f1b3cb84f8090b80da4bf152, type: 3}
-  soundEffect: {fileID: 370020778720582589}
-  soundMusic: {fileID: 2197023369880229515}
+  - soundType: 5
+    soundClip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
+  - soundType: 6
+    soundClip: {fileID: 8300000, guid: a4dc23583fb1dc84a89049f88b06efe8, type: 3}
+  IsMusicOn: 1
+  IsSfxOn: 1
+  musicVolume: 0.093
+  sfxVolume: 0.484
 --- !u!1 &3895454613097044898
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +110,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

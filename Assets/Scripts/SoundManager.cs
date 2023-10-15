@@ -9,7 +9,8 @@ public enum SoundType {
     PlayerDeath,
     EnemyMove,
     EnemyDeath,
-    Music
+    Music,
+    LevelComplete
 }
 public class SoundManager : MonoBehaviour
 {
@@ -17,6 +18,14 @@ public class SoundManager : MonoBehaviour
     public AudioSource soundEffect;
     public AudioSource soundMusic;
     public GameSound[] Sounds;
+    public bool IsMusicOn = true;
+    public bool IsSfxOn = true;
+
+    [Range(0,1)]
+    public float musicVolume = 0.5f;
+
+    [Range(0, 1)]
+    public float sfxVolume = 0.5f;
     private void Awake()
     {
         if(Instance == null)
@@ -33,12 +42,18 @@ public class SoundManager : MonoBehaviour
     {
         PlayMusic(SoundType.Music);
     }
+    private void Update()
+    {
+        SetSoundEnable();
+    }
     public void PlayMusic(SoundType soundType)
     {
+        
         AudioClip clip = GetSoundClip(soundType);
         if (clip)
         {
             soundMusic.clip = clip;
+            soundMusic.volume = musicVolume;
             soundMusic.Play();
         }
         else
@@ -48,10 +63,13 @@ public class SoundManager : MonoBehaviour
     }
     public void Play(SoundType soundType)
     {
+        if (!IsSfxOn) return;
+
         AudioClip clip = GetSoundClip(soundType);
         if (clip)
         {
-            soundEffect.PlayOneShot(clip);
+            
+            soundEffect.PlayOneShot(clip, 1f);
         }
         else
         {
@@ -65,6 +83,17 @@ public class SoundManager : MonoBehaviour
         if (sound != null)
             return sound.soundClip;
         return null;
+    }
+
+    private void SetSoundEnable()
+    {
+        if (!IsMusicOn)
+        {
+            if (soundMusic.isPlaying)
+            {
+                soundMusic.Stop();
+            }
+        }
     }
 }
 [Serializable]

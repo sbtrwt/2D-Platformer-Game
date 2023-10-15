@@ -44,6 +44,7 @@ public class LevelManager : MonoBehaviour
         int currentIndex = Array.FindIndex(Level.Levels, level => level == currentScene.name);
         int nextSceneIndex = currentScene.buildIndex + 1 - Level.LevelOffset;
         if (nextSceneIndex < Level.Levels.Length) {
+            SoundManager.Instance.Play(SoundType.LevelComplete);
             SetLevelStatus(Level.Levels[nextSceneIndex], LevelStatus.Unlocked);
             SceneManager.LoadScene(nextSceneIndex + Level.LevelOffset);
         }

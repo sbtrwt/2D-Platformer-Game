@@ -16,6 +16,7 @@ public class LobbyController : MonoBehaviour
     
     private void PlayGame()
     {
+        SoundManager.Instance.Play(SoundType.ButtonClick);
         SceneManager.LoadScene(1);
 
     }

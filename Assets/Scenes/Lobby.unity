@@ -314,6 +314,31 @@ PrefabInstance:
       propertyPath: musicVolume
       value: 0.135
       objectReference: {fileID: 0}
+    - target: {fileID: 6802431252418748809, guid: 3f2a966fe4b302d419b2b6fcf245ef18,
+        type: 3}
+      propertyPath: Sounds.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802431252418748809, guid: 3f2a966fe4b302d419b2b6fcf245ef18,
+        type: 3}
+      propertyPath: Sounds.Array.data[5].soundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 68c65aec95671b549be3b900cc305b1e, type: 3}
+    - target: {fileID: 6802431252418748809, guid: 3f2a966fe4b302d419b2b6fcf245ef18,
+        type: 3}
+      propertyPath: Sounds.Array.data[5].soundType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802431252418748809, guid: 3f2a966fe4b302d419b2b6fcf245ef18,
+        type: 3}
+      propertyPath: Sounds.Array.data[6].soundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d76c71e98617e1c41a5cdc490eb1bee1, type: 3}
+    - target: {fileID: 6802431252418748809, guid: 3f2a966fe4b302d419b2b6fcf245ef18,
+        type: 3}
+      propertyPath: Sounds.Array.data[6].soundType
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -385,8 +410,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278918918
+  m_fontColor: {r: 0.022445701, g: 0.122641504, b: 0.042169012, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5480,9 +5505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75dfaa06ddccd2047b75e259eff65882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlesCamera: {fileID: 1206739527}
-  imageResolution: {x: 256, y: 256}
-  targetImage: {fileID: 0}
 --- !u!20 &1206739527
 Camera:
   m_ObjectHideFlags: 0

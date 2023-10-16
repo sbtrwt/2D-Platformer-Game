@@ -64,6 +64,10 @@ public class PlayerController : MonoBehaviour
         {
             isCrouch = false;
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SwitchGround();
+        }
         //Box collider size change on up/down
         Move(horizontal);
         Crouch();
@@ -132,7 +136,7 @@ public class PlayerController : MonoBehaviour
            
             //rb2d.AddForce(Vector2.up * jumpAmount, ForceMode2D.Force);
             if (rb2d)
-            rb2d.AddForce(transform.up * jumpAmount * Time.deltaTime, ForceMode2D.Impulse);
+            rb2d.AddForce( transform.up * jumpAmount * Time.deltaTime, ForceMode2D.Impulse);
         }
         
     }
@@ -181,5 +185,23 @@ public class PlayerController : MonoBehaviour
     public void PlayMoveSound()
     {
         SoundManager.Instance.Play(SoundType.PlayerMove);
+    }
+
+    public void SwitchGround() 
+    { if (!IsKeyFound) return;
+        SoundManager.Instance.Play(SoundType.SwitchGround);
+        Vector3 scale = transform.localScale;
+        
+        scale.y *= -1f;
+        
+
+        transform.localScale = scale;
+        Vector3 position = transform.position;
+        position.y += rb2d.gravityScale < 0 ?  2f : -2f;
+       
+        position.y *= -1f;
+       
+        transform.position = position;
+        rb2d.gravityScale *= -1f;
     }
 }

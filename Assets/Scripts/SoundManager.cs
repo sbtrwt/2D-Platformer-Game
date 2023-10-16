@@ -11,7 +11,8 @@ public enum SoundType {
     EnemyDeath,
     Music,
     LevelComplete,
-    ItemCollect
+    ItemCollect,
+    SwitchGround
 }
 public class SoundManager : MonoBehaviour
 {

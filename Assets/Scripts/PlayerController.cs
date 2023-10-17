@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private bool IsKeyFound;
+    [SerializeField] private bool IsPlayerAlive;
     public float jumpAmount = 8;
     public int speed;
     //private bool isGrounded = false;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         if (lifeController.LifeDecrement() <= 0) { 
             animator.SetBool("IsDied", true);
             gameOverController.PlayerDied();
+            IsPlayerAlive = false;
             //ReloadScene();
         }
     }
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        IsPlayerAlive = true;
         Debug.Log("Player controller awake");
         animator = gameObject.GetComponent<Animator>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
@@ -51,7 +54,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
+        if (!IsPlayerAlive) return;
         //Control user by inputs
         float horizontal = Input.GetAxisRaw("Horizontal");
        
@@ -136,7 +139,7 @@ public class PlayerController : MonoBehaviour
            
             //rb2d.AddForce(Vector2.up * jumpAmount, ForceMode2D.Force);
             if (rb2d)
-            rb2d.AddForce( transform.up * jumpAmount * Time.deltaTime, ForceMode2D.Impulse);
+            rb2d.AddForce(rb2d.gravityScale * transform.up * jumpAmount * Time.deltaTime, ForceMode2D.Impulse);
         }
         
     }
@@ -155,6 +158,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Lower Bound");
             //ReloadScene();
             gameOverController.PlayerDied();
+            IsPlayerAlive = false;
         }
     }
     //private void OnCollisionStay2D(Collision2D other)
@@ -188,20 +192,25 @@ public class PlayerController : MonoBehaviour
     }
 
     public void SwitchGround() 
-    { if (!IsKeyFound) return;
+    { 
+        if (!IsKeyFound) return;
+
         SoundManager.Instance.Play(SoundType.SwitchGround);
         Vector3 scale = transform.localScale;
-        
+       
         scale.y *= -1f;
         
 
         transform.localScale = scale;
         Vector3 position = transform.position;
+        ParticleController.Instance.SetPosition(position);
+        ParticleController.Instance.SetVisible(true);
         position.y += rb2d.gravityScale < 0 ?  2f : -2f;
        
-        position.y *= -1f;
+        //position.y *= -1f;
        
         transform.position = position;
         rb2d.gravityScale *= -1f;
+
     }
 }

@@ -11,7 +11,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private bool IsKeyFound;
+    public float jumpAmount = 8;
+    public int speed;
+    //private bool isGrounded = false;
+
     public ScoreController scoreController;
+    public LifeController lifeController;
     internal void PickUpKey()
     {
         Debug.Log("Player get Key");
@@ -19,10 +24,16 @@ public class PlayerController : MonoBehaviour
         scoreController.ScoreIncrement(10);
     }
 
-    public float jumpAmount = 8;
-    public int speed;
-    private bool isGrounded = false;
+    internal void KillPlayer()
+    {
+        Debug.Log("Kill Player");
+        if (lifeController.LifeDecrement() <= 0) { 
+            animator.SetBool("IsDied", true);
+            ReloadScene();
+        }
+    }
 
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +41,8 @@ public class PlayerController : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
+        rb2d.freezeRotation = true;
+        rb2d.angularVelocity = 0f;
     }
 
     // Update is called once per frame
@@ -101,6 +114,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Jump() {
+        
+       
         float upMove = Input.GetAxisRaw("Vertical");
 
         animator.SetBool("IsJump", upMove > 0);
@@ -115,7 +130,7 @@ public class PlayerController : MonoBehaviour
             if (rb2d)
             rb2d.AddForce(transform.up * jumpAmount * Time.deltaTime, ForceMode2D.Impulse);
         }
-       
+        
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -129,9 +144,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("LowerBound"))
         {
             Debug.Log("Lower Bound");
-            
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            ReloadScene();
+           
         }
     }
     //private void OnCollisionStay2D(Collision2D other)
@@ -153,4 +167,9 @@ public class PlayerController : MonoBehaviour
     //        isGrounded = false;
     //    }
     //}
+
+    private void ReloadScene() {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
 }

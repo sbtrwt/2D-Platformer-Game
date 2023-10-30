@@ -141,7 +141,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("FinishLine"))
         {
             Debug.Log("Finish Line");
-            SceneManager.LoadScene("Level1");
+            //SceneManager.LoadScene("Level1");
+            //MarkCurrentLevelComplete
         }
         if (other.gameObject.CompareTag("LowerBound"))
         {

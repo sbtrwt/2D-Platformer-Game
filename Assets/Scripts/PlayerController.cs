@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public ScoreController scoreController;
     public LifeController lifeController;
+    public GameOverController gameOverController;
     internal void PickUpKey()
     {
         Debug.Log("Player get Key");
@@ -29,13 +30,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Kill Player");
         if (lifeController.LifeDecrement() <= 0) { 
             animator.SetBool("IsDied", true);
-            ReloadScene();
+            gameOverController.PlayerDied();
+            //ReloadScene();
         }
     }
 
-   
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Debug.Log("Player controller awake");
         animator = gameObject.GetComponent<Animator>();
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
         //Control user by inputs
@@ -144,8 +146,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("LowerBound"))
         {
             Debug.Log("Lower Bound");
-            ReloadScene();
-           
+            //ReloadScene();
+            gameOverController.PlayerDied();
         }
     }
     //private void OnCollisionStay2D(Collision2D other)

@@ -15,7 +15,7 @@ public class LifeController : MonoBehaviour
         life = MAX_LIFE;
     }
 
-    void Start()
+    private void Start()
     {
         RefreshUI();
     }

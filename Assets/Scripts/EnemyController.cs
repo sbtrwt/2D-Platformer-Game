@@ -56,12 +56,13 @@ public class EnemyController : MonoBehaviour
     }
     public void InitPatrol()
     {
-        if (Points == null)
+        if (Points == null || Points.Length < 1)
         {
-            Debug.LogError("Path cannot be null", gameObject);
+            //Debug.LogError("Path cannot be null", gameObject);
             return;
         }
         _currentPoint = GetPathEnumerator();
+        if (_currentPoint == null) return;
         _currentPoint.MoveNext();
         if (_currentPoint == null)
         { return; }

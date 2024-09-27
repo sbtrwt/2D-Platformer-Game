@@ -16,6 +16,7 @@ public class LevelLoader : MonoBehaviour
 
     private void OnClick()
     {
+        SoundManager.Instance.Play(SoundType.ButtonClick);
         LoadSceneByLevel();
         //SceneManager.LoadScene(LevelName);
     }
